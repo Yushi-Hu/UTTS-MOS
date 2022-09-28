@@ -1,0 +1,86 @@
+{% extends "base.html.jinja2" %}
+{% block heading %}
+    <h1 class="display-4">Mean-Opinion Score (MOS) Test</h1>
+    <p class="lead">Measuring quality of synthesized speech</p>
+    <hr class="my-4">
+    <p>
+        Thank you so much for participating in this test!
+    </p>
+    <p>
+        Listen to the sample of computer generated speech and assess the quality of the audio based on how close it is to natural speech.
+        For better results, please wear headphones and stay in a quite environment.
+        For each audio, please select an option below to indicate its quality:
+        <ul>
+            <li>1.0 (Unsatisfactory) Very annoying, distortion is objectionable.</li>
+            <li>1.5 (in-between Unsatisfactory and Poor) </li>
+            <li>2.0 (Poor) Annoying distortion, but not objectionable.</li>
+            <li>2.5 (in-between Poor and Fair) </li>
+            <li>3.0 (Fair) Perceptible distortion, slightly annoying.</li>
+            <li>3.5 (in-between Fair and Good) </li>
+            <li>4.0 (Good) Slight perceptible level of distortion, but not annoying.</li>
+            <li>4.5 (in-between Good and Excellent) </li>
+            <li>5.0 (Excellent) Imperceptible level of distortion.</li>
+        </ul>
+        <p>
+        In total, there are 9 compared systems; thus each group has 9 samples.
+        </p>
+        <p>
+        Our preliminary tests have shown that all the synthesized samples have better than "Fair" quality. So please give scores greater than 3.
+        </p>
+        <p>
+        NB: In each group, samples from compared systems are randomly shuffled and a ground-truth recording is also included. We suggest you first listen to all audio samples in each group and then give scores for better comparison. You are allowed to replay samples as you want. <b>Please remember to click the "Submit" botton after finishing.</b>
+        </p>
+    </p>
+{% endblock %}
+{% block form_questions %}
+    {% for question in questions %}
+        <div class="card form-group">
+            <div class="card-header">{{ question.title }}</div>
+            <div class="card-body">
+                <p>
+                    <audio controls src="{{ question.audio_path }}">
+                        Your browser does not support the audio element.
+                    </audio>
+                </p>
+                <p>
+                </p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_1" value="1" required>
+                    <label class="form-check-label" for="{{ question.name }}_1">1.0 (Unsatisfactory) </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_2" value="1.5" required>
+                    <label class="form-check-label" for="{{ question.name }}_1">1.5 (in-between Unsatisfactory and Poor)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_3" value="2" required>
+                    <label class="form-check-label" for="{{ question.name }}_2">2.0 (Poor)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_4" value="2.5" required>
+                    <label class="form-check-label" for="{{ question.name }}_1">2.5 (in-between Poor and Fair)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_5" value="3" required>
+                    <label class="form-check-label" for="{{ question.name }}_3">3.0 (Fair)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_6" value="3.5" required>
+                    <label class="form-check-label" for="{{ question.name }}_1">3.5 (in-between Fair and Good)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_7" value="4" required>
+                    <label class="form-check-label" for="{{ question.name }}_4">4.0 (Good)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_8" value="4.5" required>
+                    <label class="form-check-label" for="{{ question.name }}_1">4.5 (in-between Good and Excellent)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_9" value="5" required>
+                    <label class="form-check-label" for="{{ question.name }}_5">5.0 (Excellent)</label>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

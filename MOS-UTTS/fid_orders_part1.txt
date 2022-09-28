@@ -1,0 +1,5 @@
+wavs/baseline/0_0_d1000.wav
+wavs/fastspeech2/0_0_d1000.wav
+wavs/phone/0_0_d1000.wav
+wavs/groundtruth/0_0_d1000.wav
+wavs/word/0_0_d1000.wav
