@@ -19,9 +19,9 @@ def main():
     wav_fids = os.listdir(f'{wav_base_dir}/{models[0]}')
     wav_fids.sort()
 
-    part_name = "part1" # all/part1/part2
+    part_name = "all" # all/part1/part2
 
-    num_samples = 1 #len(wav_fids) // 2
+    num_samples = len(wav_fids) // 2
 
     if part_name == "all":
         form_id = 1
@@ -59,7 +59,7 @@ def main():
         for j, sample in enumerate(group):
             questions.append(
                 {
-                    "title": f"Audio{i}-model{j}",
+                    "title": f"Text{i}-Audio{j}",
                     "audio_path": sample,
                     "name": f"q{cnt}"
                 }
